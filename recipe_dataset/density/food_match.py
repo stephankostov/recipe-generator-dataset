@@ -66,7 +66,7 @@ def fuzzy_search(food_df_description, search_word, threshold=90):
     return False
 
 # %% ../../notebooks/04-density-db-food-match.ipynb 25
-with open(f'{root}/data/globals/density/ingredient_transforms.json', 'r') as f:
+with open(f'{root}/config/density/ingredient_transforms.json', 'r') as f:
     default_transforms = json.load(f)
 
 # %% ../../notebooks/04-density-db-food-match.ipynb 26
@@ -109,10 +109,10 @@ def match_food_df_on_ingredient(ingredient, exploded_food_df, debug=False):
         return matched_idxs
 
 # %% ../../notebooks/04-density-db-food-match.ipynb 42
-with open(f'{root}/data/globals/default_words.json', 'r') as f:
+with open(f'{root}/config/default_words.json', 'r') as f:
     default_words = json.load(f)['density']
 
-with open(f'{root}/data/globals/exclusion_words.json', 'r') as f:
+with open(f'{root}/config/exclusion_words.json', 'r') as f:
     exclusion_words = json.load(f)['density']
 
 def calculate_match_stats(food_descriptions, ingredient_values):

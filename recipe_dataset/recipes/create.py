@@ -49,7 +49,7 @@ from sacremoses import MosesTokenizer, MosesDetokenizer
 mt, md = MosesTokenizer(lang='en'), MosesDetokenizer(lang='en')
 
 # %% ../../notebooks/01-recipes-db-process.ipynb 10
-with open(f'{root}/data/globals/unit_conversions.json') as f:
+with open(f'{root}/config/unit_conversions.json') as f:
     unit_list = json.load(f)
 
 # %% ../../notebooks/01-recipes-db-process.ipynb 59

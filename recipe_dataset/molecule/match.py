@@ -20,14 +20,14 @@ from ..utils.join_utils import *
 import json
 
 # %% ../../notebooks/08-molecule-db-match.ipynb 7
-with open(f'{root}/data/globals/default_words.json', 'r') as f:
+with open(f'{root}/config/default_words.json', 'r') as f:
     default_words = json.load(f)['molecule']
 
-with open(f'{root}/data/globals/exclusion_words.json', 'r') as f:
+with open(f'{root}/config/exclusion_words.json', 'r') as f:
     exclusion_words = json.load(f)['molecule']
 
 # %% ../../notebooks/08-molecule-db-match.ipynb 17
-with open(f'{root}/data/globals/molecule/ingredient_transforms.json', 'r') as f:
+with open(f'{root}/config/molecule/ingredient_transforms.json', 'r') as f:
     default_transforms = json.load(f)
 
 # %% ../../notebooks/08-molecule-db-match.ipynb 18

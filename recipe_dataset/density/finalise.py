@@ -10,7 +10,7 @@ import numpy as np
 import json
 
 # %% ../../notebooks/06-density-db-finalise.ipynb 10
-with open('../data/globals/unit_conversions.json') as f:
+with open('../config/unit_conversions.json') as f:
     unit_list = json.load(f)
 
 # %% ../../notebooks/06-density-db-finalise.ipynb 15

@@ -37,7 +37,7 @@ from word2number import w2n
 import logging
 
 # %% ../notebooks/99-utils.ipynb 4
-with open(f'{root}/data/globals/unit_conversions.json') as f:
+with open(f'{root}/config/unit_conversions.json') as f:
     unit_list = json.load(f)
 
 # %% ../notebooks/99-utils.ipynb 6
