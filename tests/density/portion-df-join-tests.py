@@ -3,13 +3,13 @@ root = here()
 import sys
 sys.path.append(str(root))
 
-from food_database.utils.parallel import *
-from food_database.recipes.create import *
-from food_database.utils.utils import *
-from food_database.utils.join_utils import *
-from food_database.density.portion_match import *
-from food_database.utils.logger import *
-from food_database.utils.full_run_utils import *
+from recipe_dataset.utils.parallel import *
+from recipe_dataset.recipes.create import *
+from recipe_dataset.utils.utils import *
+from recipe_dataset.utils.join_utils import *
+from recipe_dataset.density.portion_match import *
+from recipe_dataset.utils.logger import *
+from recipe_dataset.utils.full_run_utils import *
 
 import pandas as pd
 from pathlib import Path

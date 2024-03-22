@@ -10,10 +10,10 @@ from pathlib import Path
 import pandas as pd
 from ast import literal_eval
 
-from food_database.utils.utils import *
-from food_database.recipes.create import *
-from food_database.utils.parallel import *
-from food_database.utils.logger import *
+from recipe_dataset.utils.utils import *
+from recipe_dataset.recipes.create import *
+from recipe_dataset.utils.parallel import *
+from recipe_dataset.utils.logger import *
 
 import logging
 logger = configure_logger(logging.getLogger(__name__))
