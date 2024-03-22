@@ -63,13 +63,16 @@ def main():
 
     logger.info("Loading dataframes")
     expanded_ingredients_df = pd.read_feather(select_last_file(f'{root}/../data/local/recipe/full/expanded_ingredients'), dtype_backend='pyarrow')
-    food_df = pd.read_feather(f'{root}/../data/local/molecule/full/food/1_processed.feather')
+    food_names = pd.read_feather(f'{root}/../data/local/molecule/full/food/1_processed.feather', columns=['name'])['name']
+    food_names.index.rename('id',inplace=True)
+    
+    logger.info(f"Loaded dataframes with shapes: {[expanded_ingredients_df.shape, food_names.shape]}")
 
     logger.info(f"# COMMENCING STAGE {0}: (JOIN PRIMARY) #")
     food_ids = load_or_create_dataframe(
         save_dir/'0_primary_join.feather',
         join, 
-        expanded_ingredients_df, food_df, save_dir/'0_primary_join.feather'
+        expanded_ingredients_df, food_names, save_dir/'0_primary_join.feather'
     )
 
     logger.info(f"# COMMENCING STAGE {1}: (CREATE NA SYNONYMS DF) #")
@@ -83,18 +86,18 @@ def main():
     na_synonym_food_ids = load_or_create_dataframe(
         save_dir/'2_na_synonym_join.feather',
         na_synonym_join, 
-        na_synonyms_df, food_df
+        na_synonyms_df, food_names
     )
 
     logger.info("Joining dataframes")
     join_results = join(expanded_ingredients_df, 
-                        food_df['name'], 
+                        food_names, 
                         Path(f'{root}/../data/local/molecule/full/food_id'))
 
     logger.info("Filling NA ingredients")
     join_results = na_synonym_join(expanded_ingredients_df, 
                     join_results, 
-                    food_df['name'])
+                    food_names)
     join_results.to_frame('food_id').to_feather(f'{root}/../data/local/molecule/full/food_id/2_na_filled.feather')
 
 if __name__ == '__main__':
