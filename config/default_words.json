@@ -1,0 +1,4 @@
+{
+    "density": ["raw", "nfs", "ns", "n", "whole", "fresh", "regular", "plain", "unflavoured", "unenriched", "table", "spice", "hard", "nut", "fish", "skin eaten", "n cooking method"],
+    "molecule": ["raw", "whole", "fresh", "regular", "plain", "unflavoured", "unenriched", "table", "hard", "common", "ripe", "average"]
+}

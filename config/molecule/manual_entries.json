@@ -1,0 +1,35 @@
+{
+    "baking soda": {
+        "food_df": {
+            "name": "baking soda",
+            "scientific_name": "bicarbonate soda",
+            "description": "alkaline leavening agent",
+            "food_group": "Baking goods"
+        },
+        "content_df": [{
+            "source_id": 15423,
+            "orig_content": 1e5,
+            "orig_unit": "mg/100g"
+        }]
+    },
+    "baking powder": {
+        "food_df": {
+            "name": "baking powder",
+            "scientific_name": "baking powder",
+            "description": "acid+alkaline leavening agent",
+            "food_group": "Baking goods"
+        },
+        "content_df": [
+            {
+                "source_id": 15423,
+                "orig_content": 3e4,
+                "orig_unit": "mg/100g"
+            },
+            {
+                "source_id": 13358,
+                "orig_content": 1e4,
+                "orig_unit": "mg/100g"
+            }
+        ]
+    }
+}

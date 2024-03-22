@@ -1,0 +1,84 @@
+{
+    "egg": {
+        "key": ["egg"],
+        "value": {
+            "name.name.nouns.0": "egg"
+        }
+    },
+    "lime juice": {
+        "key": ["lime", "juice"],
+        "value": {
+            "name.name.nouns.0": "lime"
+        }
+    },
+    "lemomn juice": {
+        "key": ["lemon", "juice"],
+        "value": {
+            "name.name.nouns.0": "lemon"
+        }
+    },
+    "chicken": {
+        "key": ["chicken"],
+        "value": {
+            "name.name.nouns.0": "chicken"
+        }
+    },
+    "pork": {
+        "key": ["pork"],
+        "value": {
+            "name.name.nouns.0": "domestic",
+            "name.name.nouns.1": "pig"
+        }
+    },
+    "steak": {
+        "key": ["steak"],
+        "value": {
+            "name.name.nouns.0": "beef"
+        }
+    },
+    "cornflour": {
+        "key": ["cornflour"],
+        "value": {
+            "name.name.nouns.0": "flour"
+        }
+    },
+    "cornstarch": {
+        "key": ["cornstarch"],
+        "value": {
+            "name.name.nouns.0": "flour"
+        }
+    },
+    "paprika": {
+        "key": ["paprika"],
+        "value": {
+            "name.name.nouns.0": "capsicum",
+            "name.name.nouns.1": "pepper"
+        }
+    },
+    "breadcrumb": {
+        "key": ["breadcrumb"],
+        "value": {
+            "name.name.nouns.0": "bread"
+        }
+    },
+    "coriander": {
+        "key": ["cilantro"],
+        "value": {
+            "name.name.nouns.0": "coriander"
+        }
+    },
+    "raisin": {
+        "key": ["raisin"],
+        "value": {
+            "name.name.nouns.0": "black",
+            "name.name.nouns.1": "raisin"
+        }
+    },
+    "orange": {
+        "key": ["orange"],
+        "value": {
+            "name.name.nouns.0": "sweet",
+            "name.name.nouns.1": "orange"
+        }
+    }
+}

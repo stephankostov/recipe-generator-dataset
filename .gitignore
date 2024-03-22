@@ -1,0 +1,11 @@
+*.egg
+*.egg-info
+*__pycache__
+.ipynb_checkpoints
+.log
+.vscode
+.DS_Store
+
+dask.log
+
+misc

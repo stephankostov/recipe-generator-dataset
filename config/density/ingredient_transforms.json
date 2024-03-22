@@ -1,0 +1,91 @@
+{
+    "flour": {
+        "key": ["flour"],
+        "value": {
+            "name.name.nouns.0": "all-purpose",
+            "name.name.nouns.1": "wheat flour"
+        }
+    },
+    "oil": {
+        "key": ["oil"],
+        "value": {
+            "name.name.nouns.0": "sunflower",
+            "name.name.nouns.1": "oil"
+        }
+    },
+    "pasta": {
+        "key": ["pasta"],
+        "value": {
+            "name.name.nouns.0": "dry",
+            "name.name.nouns.1": "pasta"
+        }
+    },
+    "courgette": {
+        "key": ["zucchini"],
+        "value": {
+            "name.name.nouns.0": "zucchini",
+            "name.name.nouns.1": "squash"
+        }
+    },
+    "baking soda": {
+        "key": ["soda"],
+        "value": {
+            "name.name.nouns.0": "baking",
+            "name.name.nouns.1": "soda"
+        }
+    },
+    "cornstarch": {
+        "key": ["cornstarch"],
+        "value": {
+            "name.name.nouns.0": "cornflour"
+        }
+    },
+    "soy sauce": {
+        "key": ["soy", "sauce"],
+        "value": {
+            "name.name.nouns.0": "soy",
+            "name.name.nouns.1": "sauce",
+            "name.name.nouns.2": "sodium"
+        }
+    },
+    "salad dressing": {
+        "key": ["salad"],
+        "value": {
+            "name.name.nouns.0": "salad",
+            "name.name.nouns.1": "leaves"
+        }
+    },
+    "oleo": {
+        "key": ["oleo"],
+        "value": {
+            "name.name.nouns.0": "butter"
+        }
+    },
+    "bacon": {
+        "key": ["bacon"],
+        "value": {
+            "name.name.nouns.0": "pork",
+            "name.name.nouns.1": "bacon"
+        }
+    },
+    "mint": {
+        "key": ["mint"],
+        "value": {
+            "name.name.nouns.0": "spearmint"
+        }
+    },
+    "molasses": {
+        "key": ["molasses"],
+        "value": {
+            "name.name.nouns.0": "brown",
+            "name.name.nouns.1": "sugar"
+        }
+    },
+    "bell pepper": {
+        "key": ["bell", "pepper"],
+        "value": {
+            "name.name.nouns.0": "sweet",
+            "name.name.nouns.1": "pepper"
+        }
+    }
+}

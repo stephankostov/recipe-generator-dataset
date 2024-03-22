@@ -1,0 +1,76 @@
+{
+    "volume": {
+        "milliliter": {
+            "matches": ["ml"],
+            "conversion": 1.0
+        },
+        "cup": {
+            "matches": ["c"],
+            "conversion": 236.588
+        },
+        "quart": {
+            "matches": ["qrt", "q"],
+            "conversion": 946.353
+        },
+        "gallon": {
+            "matches": [],
+            "conversion": 3785.41
+        },
+        "pint": {
+            "matches": ["p"],
+            "conversion": 473
+        },
+        "fluid_ounce": {
+            "matches": ["floz", "fl oz"],
+            "conversion": 30
+        },
+        "tablespoon": {
+            "matches": ["tbsp", "tbsps"],
+            "conversion": 15
+        },
+        "teaspoon": {
+            "matches": ["tsp", "tsps"],
+            "conversion": 5
+        },
+        "can": {
+            "matches": ["tin"],
+            "conversion": 450
+        },
+        "cubic_inch": {
+            "matches": ["in^3, inch^3"],
+            "conversion": 16.3871
+        }
+    },
+    "weight": {
+        "gram": {
+            "matches": ["g", "gr"],
+            "conversion": 1.0
+        },
+        "pound": {
+            "matches": ["lb"],
+            "conversion": 453.592
+        },
+        "killogram": {
+            "matches": ["kg"],
+            "conversion": 1000
+        },
+        "ounce": {
+            "matches": ["oz"],
+            "conversion": 28.3495
+        }
+    },
+    "portion": {
+        "whole": {
+            "matches": ["full", "large", "medium", "small", "regular", "fruit", "nut"]
+        },
+        "piece": {
+            "matches": ["chunk", "slice", "bit", "section"]
+        },
+        "portion": {
+            "matches": ["serving", "helping"]
+        },
+        "package": {
+            "matches": ["pack", "packet", "sachet", "envelope"]
+        }
+    }
+}

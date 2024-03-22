@@ -1,0 +1,129 @@
+{
+    "join": [
+        {
+            "name": "orange",
+            "ingredient_id": [1608197,	0],
+            "food_id": [57, 950],
+            "comment": ""
+        },
+        {
+            "name": "lime juice",
+            "ingredient_id": [894410,	7],
+            "food_id": [53],
+            "comment": "default this to lime"
+        },
+        {
+            "name": "sourdough bread",
+            "ingredient_id": [982726,	0],
+            "food_id": [269]
+        },
+        {
+            "name": "white chocolate",
+            "ingredient_id": [1042455,	7],
+            "food_id": [709]
+        },
+        {
+            "name": "chicken breast",
+            "ingredient_id": [382666,	0],
+            "food_id": [334],
+            "comment": "1. increase fuzz match ratio | 2. default noun reordering for meats?"
+        },
+        {
+            "name": "olive oil",
+            "ingredient_id": [855127,	3],
+            "food_id": [941]
+        },
+        {
+            "name": "raisin",
+            "ingredient_id": [982726,	9],
+            "food_id": [1000],
+            "comment": "name_match_position broke this"
+        },
+        {
+            "name": "onion",
+            "ingredient_id": [767911,	1],
+            "food_id": [6]
+        },
+        {
+            "name": "ground beef",
+            "ingredient_id": [689193,	0],
+            "food_id": [506]
+        },
+        {
+            "name": "baking soda",
+            "ingredient_id": [53081,	4],
+            "food_id": [1025],
+            "comment": "doesnt have info - add it to database as it is single compound"
+        },
+        {
+            "name": "types of sauce",
+            "ingredient_id": [894410,	5],
+            "food_id": [665],
+            "comment": "generic condament"
+        },
+        {
+            "name": "egg white",
+            "ingredient_id": [53081,	6],
+            "food_id": [633],
+            "comment": "name_match_position broke this"
+        },
+        {
+            "name": "steak",
+            "ingredient_id": [1417905,	5],
+            "food_id": [506],
+            "comment": "ingredient_transform fix"
+        }
+    ],
+    "synonym_join": [
+        {
+            "name": "cilantro",
+            "ingredient_id": [1196992,	9	],
+            "food_id": [61],
+            "comment": "core synonym test"
+        },
+        {
+            "name": "mozerella",
+            "ingredient_id": [689193,	4	],
+            "food_id": [631],
+            "comment": "core synonym test"
+        },
+        {
+            "name": "tequila",
+            "ingredient_id": [1428429,	0	],
+            "food_id": [630],
+            "comment": "core synonym test"
+        },
+        {
+            "name": "linguine",
+            "ingredient_id": [1262123,	0	],
+            "food_id": [274],
+            "comment": "core synonym test"
+        },
+        {
+            "name": "bacon",
+            "ingredient_id": [305911,	1	],
+            "food_id": [549],
+            "comment": "synonym search + ingredient_transform fix"
+        }
+    ],
+    "duplicate_selection": [
+        {
+            "name": "sugar",
+            "ingredient_id": [1608197,	3],
+            "citation": "USDA",
+            "orig_food_id": [19335]
+        },
+        {
+            "name": "olive",
+            "ingredient_id": [305911,	4],
+            "citation": "USDA",
+            "orig_food_id": [9193]
+        },
+        {
+            "name": "water",
+            "ingredient_id": [989386,	3	],
+            "citation": "DTU",
+            "orig_food_id": [327]
+        }
+    ]
+}

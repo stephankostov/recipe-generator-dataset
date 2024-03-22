@@ -1,0 +1,178 @@
+{
+    "food_df": [
+        {
+            "name": "pasta",
+            "ingredient_id": [1399227, 8],
+            "food_id": [168927]
+        },
+        {
+            "name": "parmesan",
+            "ingredient_id": [382666, 4],
+            "food_id": [2341133]
+        },
+        {
+            "name": "brown sugar",
+            "ingredient_id": [1747790, 1],
+            "food_id": [168833, 2345820]
+        },
+        {
+            "name": "green beans",
+            "ingredient_id": [221805, 0],
+            "food_id": [169961, 169961]
+        },
+        {
+            "name": "white onion",
+            "ingredient_id": [1196992, 4],
+            "food_id": [2345315]
+        },
+        {
+            "name": "chocolate milk",
+            "ingredient_id": [1201166, 1],
+            "food_id": [2340846, 2340870]
+        },
+        {
+            "name": "coffee",
+            "ingredient_id": [1957596,	4],
+            "food_id": [2345933]
+        },
+        {
+            "name": "walnuts",
+            "ingredient_id": [824600,	8],
+            "food_id": [170187]
+        },
+        {
+            "name": "red bell pepper",
+            "ingredient_id": [931097,	10],
+            "food_id": [2345321]
+        },
+        {
+            "name": "vanilla",
+            "ingredient_id": [19927,	6],
+            "food_id": [172235, 172236]
+        },
+        {
+            "name": "zucchini",
+            "ingredient_id": [160023,	1],
+            "food_id": [169291, 168565]
+        },
+        {
+            "name": "black pepper",
+            "ingredient_id": [1176207,	12],
+            "food_id": [170931]
+        },
+        {
+            "name": "dried cranberry",
+            "ingredient_id": [2111340,	6	],
+            "food_id": [171723, 2344697]
+        },
+        {
+            "name": "ground beef",
+            "ingredient_id": [1124031,	0	],
+            "food_id": [2341258]
+        },
+        {
+            "name": "cheddar cheese",
+            "ingredient_id": [1679952,	3	],
+            "food_id": [328637, 2341112]
+        },
+        {
+            "name": "salmon",
+            "ingredient_id": [1198022,	1	],
+            "food_id": [2341699, 2341700]
+        },
+        {
+            "name": "chicken",
+            "ingredient_id": [1191009,	5	],
+            "food_id": [2341341, 2341353]
+        },
+        {
+            "name": "milk",
+            "ingredient_id": [1636665,	4	],
+            "food_id": [2340761]
+        },
+        {
+            "name": "mustard",
+            "ingredient_id": [1084447,	3],
+            "food_id": [326698]
+        },
+        {
+            "name": "soda",
+            "ingredient_id": [61781,	3	],
+            "food_id": [175040]
+        },
+        {
+            "name": "soy sauce",
+            "ingredient_id": [2193584,	6		],
+            "food_id": [2342918]
+        },
+        {
+            "name": "cornstarch",
+            "ingredient_id": [1094605,	6],
+            "food_id": [169748, 170290]
+        },
+        {
+            "name": "tomato paste",
+            "ingredient_id": [821447,	6],
+            "food_id": [170160, 2345869]
+        },
+        {
+            "name": "bacon",
+            "ingredient_id": [637523,	7	],
+            "food_id": [169748]
+        },
+        {
+            "name": "mint",
+            "ingredient_id": [1374679,	3	],
+            "food_id": [173475]
+        },
+        {
+            "name": "caramels",
+            "ingredient_id": [1746116,	5	],
+            "food_id": [2345914, 167974]
+        }
+        
+    ],
+    "portion_df": [
+        {
+            "name": "egg",
+            "ingredient_id": [295232, 7],
+            "portion_id": [88378]
+        },
+        {
+            "name": "onion",
+            "ingredient_id": [1847919, 3],
+            "portion_id": [286031]
+        },
+        {
+            "name": "lettuce",
+            "ingredient_id": [1708581, 1],
+            "portion_id": [83087],
+            "comment": "testing selection of largest portion ie. lettuce [head]"
+        },
+        {
+            "name": "avocado",
+            "ingredient_id": [1820100, 2],
+            "portion_id": [283774]
+        },
+        {
+            "name": "sourdough",
+            "ingredient_id": [982726, 0],
+            "portion_id": [276725]
+        },
+        {
+            "name": "sharp cheese",
+            "ingredient_id": [767592,	4],
+            "portion_id": [268914]
+        },
+        {
+            "name": "red onion",
+            "ingredient_id": [1345852,	1],
+            "portion_id": [286030]
+        },
+        {
+            "name": "chocolate chips",
+            "ingredient_id": [1746116,	8],
+            "portion_id": [277995]
+        }
+    ]
+}
