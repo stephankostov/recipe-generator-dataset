@@ -63,7 +63,7 @@ def main():
 
     logger.info("Loading dataframes")
     expanded_ingredients_df = pd.read_feather(select_last_file(f'{root}/../data/local/recipe/full/expanded_ingredients'), dtype_backend='pyarrow')
-    food_names = pd.read_feather(f'{root}/../data/local/molecule/full/food/1_processed.feather', columns=['name'])['name']
+    food_names = pd.read_feather(f'{root}/../data/local/molecule/full/food/2_feature_engineered.feather', columns=['name'])['name']
     food_names.index.rename('id',inplace=True)
     
     logger.info(f"Loaded dataframes with shapes: {[expanded_ingredients_df.shape, food_names.shape]}")
