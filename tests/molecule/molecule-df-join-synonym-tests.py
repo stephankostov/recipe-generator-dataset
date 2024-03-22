@@ -80,8 +80,8 @@ def main():
     with open(f'{root}/tests/molecule/molecule-db-test-config.json') as f:
         tests_info = json.load(f)['synonym_join']
 
-    expanded_ingredients_df = pd.read_feather(select_last_file(f'{root}/data/local/recipe/full/expanded_ingredients/'), dtype_backend='pyarrow')
-    food_df = pd.read_feather(select_last_file(f'{root}/data/local/molecule/full/food/'))
+    expanded_ingredients_df = pd.read_feather(select_last_file(f'{root}/../data/local/recipe/full/expanded_ingredients/'), dtype_backend='pyarrow')
+    food_df = pd.read_feather(select_last_file(f'{root}/../data/local/molecule/full/food/'))
 
     ingredient_synonym_df = create_ingredient_synonym_df(tests_info, expanded_ingredients_df)
 

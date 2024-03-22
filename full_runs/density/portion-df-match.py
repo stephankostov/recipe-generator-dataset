@@ -38,13 +38,13 @@ def food_portion_select(ingredients_df, food_ids, portion_df, save_path):
 def main():
 
     logger.info("Initialising files")
-    save_dir = Path(f'{root}/data/local/density/full/food_portion_ids')
+    save_dir = Path(f'{root}/../data/local/density/full/food_portion_ids')
     save_dir.mkdir(parents=True, exist_ok=True)
 
     logger.info("Loading dataframes")
-    ingredients_df = pd.read_feather(select_last_file(f'{root}/data/local/recipe/full/ingredients'))
-    portion_df = pd.read_feather(select_last_file(f'{root}/data/local/density/full/food_portion'))
-    food_ids = pd.read_feather(select_last_file(f'{root}/data/local/density/full/food_ids'))
+    ingredients_df = pd.read_feather(select_last_file(f'{root}/../data/local/recipe/full/ingredients'))
+    portion_df = pd.read_feather(select_last_file(f'{root}/../data/local/density/full/food_portion'))
+    food_ids = pd.read_feather(select_last_file(f'{root}/../data/local/density/full/food_ids'))
 
     logger.info("Commencing stages")
 

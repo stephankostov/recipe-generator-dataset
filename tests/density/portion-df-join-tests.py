@@ -78,7 +78,7 @@ def run_tests(tests_info, save_dir, *args):
 def main():
 
     logger.info("Initialising files")
-    save_dir = Path(f'{root}/data/tests/density/portion-df-join/')
+    save_dir = Path(f'{root}/../data/tests/density/portion-df-join/')
     initialise_output_files(save_dir)
 
     logger.info("Loading data")
@@ -86,10 +86,10 @@ def main():
     with open(f'{root}/tests/density/density-db-test-config.json') as f:
         tests_info = json.load(f)['portion_df']
 
-    ingredients_df = pd.read_feather(select_last_file(f'{root}/data/local/recipe/partial/ingredients/'))
-    food_ids = pd.read_feather(select_last_file(f'{root}/data/local/density/partial/food_ids/'))
-    food_df = pd.read_feather(select_last_file(f'{root}/data/local/density/full/food/'))
-    food_portion_df = pd.read_feather(select_last_file(f'{root}/data/local/density/full/food_portion/'))
+    ingredients_df = pd.read_feather(select_last_file(f'{root}/../data/local/recipe/partial/ingredients/'))
+    food_ids = pd.read_feather(select_last_file(f'{root}/../data/local/density/partial/food_ids/'))
+    food_df = pd.read_feather(select_last_file(f'{root}/../data/local/density/full/food/'))
+    food_portion_df = pd.read_feather(select_last_file(f'{root}/../data/local/density/full/food_portion/'))
 
     logger.info("Running tests")
 

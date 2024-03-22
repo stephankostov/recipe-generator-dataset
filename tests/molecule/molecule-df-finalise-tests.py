@@ -74,9 +74,9 @@ def main():
     with open(f'{root}/tests/molecule/molecule-db-test-config.json') as f:
         tests_info = json.load(f)['duplicate_selection']
 
-    expanded_ingredients_df = pd.read_feather(select_last_file(f'{root}/data/local/recipe/full/expanded_ingredients/'), dtype_backend='pyarrow')
-    food_ids = pd.read_feather(select_last_file(f'{root}/data/local/density/full/food_ids/'), columns=['recipe', 'ingredient', 'unit_type'])
-    content_df = pd.read_feather(select_last_file(f'{root}/data/local/density/full/content/'))
+    expanded_ingredients_df = pd.read_feather(select_last_file(f'{root}/../data/local/recipe/full/expanded_ingredients/'), dtype_backend='pyarrow')
+    food_ids = pd.read_feather(select_last_file(f'{root}/../data/local/density/full/food_ids/'), columns=['recipe', 'ingredient', 'unit_type'])
+    content_df = pd.read_feather(select_last_file(f'{root}/../data/local/density/full/content/'))
 
     content_df = content_df.set_index(content_df.reset_index().index, append=True)
     content_df.index.rename('content_id', inplace=True, level=2)

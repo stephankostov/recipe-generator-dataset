@@ -150,7 +150,7 @@ def main():
     ]
 
     logger.info("Initialising files")
-    save_dir = Path(f'{root}/data/local/recipe/full/ingredients')
+    save_dir = Path(f'{root}/../data/local/recipe/full/ingredients')
     save_dir.mkdir(parents=True, exist_ok=True)
 
     logger.info("Loading dataframe")
@@ -159,7 +159,7 @@ def main():
         stage_name = stages[stage].__name__
         ingredients_df = pd.read_feather(save_dir/f'{stage}_{stage_name}.feather')
     else: 
-        ingredients_df = pd.read_csv(f'{root}/data/datasets/recipe/recipes_nlg/full_dataset.csv')
+        ingredients_df = pd.read_csv(f'{root}/../data/datasets/recipe/recipes_nlg/full_dataset.csv')
 
     for i, stage in enumerate(stages):
         if i < args.from_stage:

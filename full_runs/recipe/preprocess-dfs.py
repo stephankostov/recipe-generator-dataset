@@ -59,7 +59,7 @@ def iterate_file(file_path):
 
 def main():
 
-    save_dir = Path(f'{root}/data/local/recipe/full/')
+    save_dir = Path(f'{root}/../data/local/recipe/full/')
 
     ingredients_df_path = select_last_file(save_dir/'ingredients')
     expanded_ingredients_df_path = select_last_file(save_dir/'expanded_ingredients')

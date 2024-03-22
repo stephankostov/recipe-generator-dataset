@@ -54,12 +54,12 @@ def na_synonym_join(na_synonyms_df, food_df):
 def main():
 
     logger.info("Initialising files")
-    save_dir = Path(f'{root}/data/local/density/full/food_ids')
+    save_dir = Path(f'{root}/../data/local/density/full/food_ids')
     save_dir.mkdir(parents=True, exist_ok=True)
 
     logger.info("Loading dataframes")
-    expanded_ingredients_df = pd.read_feather(select_last_file(f'{root}/data/local/recipe/full/expanded_ingredients'), dtype_backend='pyarrow')
-    ingredients_df = pd.read_feather(select_last_file(f'{root}/data/local/recipe/full/ingredients'), columns=['recipe', 'ingredient', 'unit_type'], dtype_backend='pyarrow')
+    expanded_ingredients_df = pd.read_feather(select_last_file(f'{root}/../data/local/recipe/full/expanded_ingredients'), dtype_backend='pyarrow')
+    ingredients_df = pd.read_feather(select_last_file(f'{root}/../data/local/recipe/full/ingredients'), columns=['recipe', 'ingredient', 'unit_type'], dtype_backend='pyarrow')
     food_df = pd.read_feather(select_last_file(save_dir/'../food'))
 
     expanded_ingredients_df = expanded_ingredients_df.join(ingredients_df)

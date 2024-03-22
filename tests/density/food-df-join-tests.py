@@ -78,7 +78,7 @@ def run_tests(tests_info, save_dir, *args):
 def main():
     
     logger.info("Initialising files")
-    save_dir = Path(f'{root}/data/tests/food-df-join/')
+    save_dir = Path(f'{root}/../data/tests/food-df-join/')
     initialise_output_files(save_dir)
 
     logger.info("Loading data")
@@ -86,9 +86,9 @@ def main():
     with open(f'{root}/tests/density/density-db-test-config.json') as f:
         tests_info = json.load(f)['food_df']
 
-    expanded_ingredients_df = pd.read_feather(select_last_file(f'{root}/data/local/recipe/full/expanded_ingredients/'), dtype_backend='pyarrow')
-    ingredients_df = pd.read_feather(select_last_file(f'{root}/data/local/recipe/full/ingredients/'), columns=['recipe', 'ingredient', 'unit_type'])
-    food_df = pd.read_feather(select_last_file(f'{root}/data/local/density/full/food/'))
+    expanded_ingredients_df = pd.read_feather(select_last_file(f'{root}/../data/local/recipe/full/expanded_ingredients/'), dtype_backend='pyarrow')
+    ingredients_df = pd.read_feather(select_last_file(f'{root}/../data/local/recipe/full/ingredients/'), columns=['recipe', 'ingredient', 'unit_type'])
+    food_df = pd.read_feather(select_last_file(f'{root}/../data/local/density/full/food/'))
 
     exploded_food_df = food_df.explode('description_list')['description_list'].to_frame('description')
 

@@ -19,7 +19,7 @@ import random
 from itertools import islice
 
 # %% ../../notebooks/training/loading-data.ipynb 6
-food_compounds_df = pd.read_feather(f'{root}/data/local/molecule/full/food_compounds/0.feather')
+food_compounds_df = pd.read_feather(f'{root}/../data/local/molecule/full/food_compounds/0.feather')
 
 # %% ../../notebooks/training/loading-data.ipynb 7
 special_token_idxs = {

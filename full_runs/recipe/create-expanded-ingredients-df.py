@@ -117,7 +117,7 @@ def main():
     p.add_argument('--from_stage', type=int, default=0)
     script_args = p.parse_args()
 
-    save_dir = Path(f'{root}/data/local/recipe/full/expanded_ingredients')
+    save_dir = Path(f'{root}/../data/local/recipe/full/expanded_ingredients')
 
     stages = [
         initialize,
