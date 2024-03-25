@@ -47,7 +47,7 @@ def get_food_hypernyms(synset):
     except ValueError:
         pass
     
-    hypernyms = hypernyms[:7]
+    hypernyms = hypernyms[:5]
     
     return hypernyms
 
@@ -75,13 +75,13 @@ def find_alt_words(word):
     synset = get_synset(word)
     if not synset: return
        
-    synonyms = list(set(synset.lemma_names()) - {word})
+    synonyms = list(set(synset.lemma_names()) - {word})[:5]
     hypernyms = get_food_hypernyms(synset)
 
     alt_words = [ *synonyms, *hypernyms ]
     
     alt_words = clean_alt_words(alt_words)
 
-    alt_words = alt_words[:10]
+    alt_words = alt_words[:5]
 
     return alt_words

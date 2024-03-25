@@ -19,7 +19,7 @@ import logging
 
 logger = configure_logger(logging.getLogger(__name__))
 
-def join(expanded_ingredients_df, foods, save_path):
+def match(expanded_ingredients_df, foods, save_path):
     
     food_ids = parallel_apply_chunks(
         expanded_ingredients_df,
@@ -35,26 +35,9 @@ def join(expanded_ingredients_df, foods, save_path):
 
 def create_na_synonyms_df_stage(expanded_ingredients_df, food_ids):
 
-    na_expanded_ingredients_df = expanded_ingredients_df.loc[food_ids.isna()]
+    na_expanded_ingredients_df = expanded_ingredients_df[food_ids.isna()]
     na_synonyms_df = create_na_synonyms_df(na_expanded_ingredients_df)
     return na_synonyms_df
-
-def na_synonym_join(expanded_ingredients_df, join_results, foods, save_dir):
-
-    na_expanded_ingredients_df = expanded_ingredients_df.loc[join_results.isna()]
-    na_synonyms_df = create_na_synonyms_df(na_expanded_ingredients_df)
-
-    na_synonym_join_results = parallel_apply(
-        na_synonyms_df,
-        match_ingredient,
-        meta=pd.Series(dtype='int64'),
-        npartitions=5000,
-        args=(foods,)
-    )
-
-    join_results = join_results.fillna(na_synonym_join_results)
-
-    return join_results
 
 def main():
 
@@ -68,12 +51,16 @@ def main():
     
     logger.info(f"Loaded dataframes with shapes: {[expanded_ingredients_df.shape, food_names.shape]}")
 
-    logger.info(f"# COMMENCING STAGE {0}: (JOIN PRIMARY) #")
+    logger.info(f"# COMMENCING STAGE {0}: (MATCH PRIMARY) #")
     food_ids = load_or_create_dataframe(
-        save_dir/'0_primary_join.feather',
-        join, 
-        expanded_ingredients_df, food_names, save_dir/'0_primary_join.feather'
+        save_dir/'0_primary_match.feather',
+        match, 
+        expanded_ingredients_df, food_names, save_dir/'0_primary_match.feather'
     )
+
+    # #TODO: load_or_create_dataframe not able to handle series output from compile chunks
+    food_ids = food_ids.rename({0: 'food_id'}, axis=1)
+    food_ids = food_ids['food_id']
 
     logger.info(f"# COMMENCING STAGE {1}: (CREATE NA SYNONYMS DF) #")
     na_synonyms_df = load_or_create_dataframe(
@@ -82,23 +69,31 @@ def main():
         expanded_ingredients_df, food_ids
     )
 
-    logger.info(f"# COMMENCING STAGE {2}: (JOIN SYNONONYM DF) #")
+    logger.info(f"# COMMENCING STAGE {2}: (MATCH SYNONONYM DF) #")
     na_synonym_food_ids = load_or_create_dataframe(
-        save_dir/'2_na_synonym_join.feather',
-        na_synonym_join, 
-        na_synonyms_df, food_names
+        save_dir/'2_na_synonym_match.feather',
+        match, 
+        na_synonyms_df, food_names, save_dir/'2_na_synonym_match.feather'
     )
 
-    logger.info("Joining dataframes")
-    join_results = join(expanded_ingredients_df, 
-                        food_names, 
-                        Path(f'{root}/../data/local/molecule/full/food_id'))
+    #TODO: load_or_create_dataframe not able to handle series output from compile chunks
+    na_synonym_food_ids = na_synonym_food_ids.rename({0: 'food_id'}, axis=1)
+    na_synonym_food_ids = na_synonym_food_ids['food_id']
 
-    logger.info("Filling NA ingredients")
-    join_results = na_synonym_join(expanded_ingredients_df, 
-                    join_results, 
-                    food_names)
-    join_results.to_frame('food_id').to_feather(f'{root}/../data/local/molecule/full/food_id/2_na_filled.feather')
+    logger.info(f"# COMMENCING STAGE {3}: (FILLING NA RESULTS) #")
+    food_ids = food_ids.fillna(na_synonym_food_ids)
+    food_ids.to_frame().to_feather(save_dir/'3_na_filled.feather')
+
+    # logger.info("Joining dataframes")
+    # join_results = match(expanded_ingredients_df, 
+    #                     food_names, 
+    #                     Path(f'{root}/../data/local/molecule/full/food_id'))
+
+    # logger.info("Filling NA ingredients")
+    # join_results = na_synonym_join(expanded_ingredients_df, 
+    #                 join_results, 
+    #                 food_names)
+    # join_results.to_frame('food_id').to_feather(f'{root}/../data/local/molecule/full/food_id/3_na_filled.feather')
 
 if __name__ == '__main__':
     main()

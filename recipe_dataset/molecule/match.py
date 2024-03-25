@@ -18,6 +18,7 @@ from ..utils.utils import *
 from ..utils.join_utils import *
 
 import json
+from tqdm import tqdm
 
 # %% ../../notebooks/09-molecule-db-match.ipynb 7
 with open(f'{root}/config/default_words.json', 'r') as f:
@@ -158,17 +159,18 @@ def match_ingredient(ingredient, food_names):
 # %% ../../notebooks/09-molecule-db-match.ipynb 45
 def create_na_synonyms_df(na_expanded_ingredients_df):
 
-    na_synonyms_df = na_expanded_ingredients_df.copy(deep=True)
+    na_synonyms_list_df = na_expanded_ingredients_df.copy(deep=True)
+    na_synonyms_df = pd.DataFrame(dtype='string')
 
-    for col in na_synonyms_df.columns:
-        na_synonyms_df[col] = na_synonyms_df[col].apply(find_alt_words)
+    # fetching thesaurus synonyms
+    for col in tqdm(na_synonyms_list_df.columns):
+        na_synonyms_list_df[col] = na_synonyms_list_df[col].apply(find_alt_words)
+        na_synonyms_list_df[col] = na_synonyms_list_df[col].apply(lambda x: [] if not isinstance(x, list) else x)
 
-    na_synonyms_df = na_synonyms_df.map(lambda x: [] if not isinstance(x, list) else x)
-
-    for col in na_synonyms_df.columns:
-        expanded = pd.DataFrame(na_synonyms_df[col].tolist(), index=na_synonyms_df.index)
+    # expanding synonym lists into columns
+    for col in na_synonyms_list_df.columns:
+        expanded = pd.DataFrame(na_synonyms_list_df[col].tolist(), index=na_synonyms_list_df.index, dtype='string').loc[:,:8]
         expanded.columns = [col + '.' + str(c) for c in expanded.columns]
-        na_synonyms_df = na_synonyms_df.join(expanded)
-        na_synonyms_df.drop(columns=[col], inplace=True)
+        na_synonyms_df = pd.concat([na_synonyms_df, expanded], axis=1)
 
     return na_synonyms_df
