@@ -105,6 +105,7 @@ def compile_chunks(save_path):
     compiled_chunks = pd.DataFrame()
     for i in range(len(list(chunk_dir.iterdir()))):
         chunk = pd.read_feather(chunk_dir/f"{i}.feather")
+        print(i, chunk.iloc[0,0])
         compiled_chunks = pd.concat([compiled_chunks, chunk], axis=0)
 
     compiled_chunks.to_feather(save_path)

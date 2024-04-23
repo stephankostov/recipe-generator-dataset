@@ -15,12 +15,21 @@ def select_last_file(file_path, glob_pattern=r'*[0-9]*.feather'):
     files = sorted(list(files))
     return files[-1]
 
-def load_or_create_dataframe(save_path, create_function, *args):
+def load_or_create_dataframe(save_path, create_function, is_series=False, series_name=None, dtype_backend='pyarrow', postprocess_cbs=[], **kargs):
 
-    try:
-        df = pd.read_feather(save_path)
-    except FileNotFoundError:
-        df = create_function(*args)
-        df.to_feather(save_path)
+    if Path(save_path).exists():
+        df = pd.read_feather(save_path, dtype_backend=dtype_backend)
+        if is_series: 
+            df = df.iloc[:,0]
+            if series_name: df = df.rename(series_name)
+    else:
+        df = create_function(**kargs)
+        if postprocess_cbs: 
+            for cb in postprocess_cbs:
+                df = cb(df)
+        if is_series: 
+            if series_name: df = df.rename(series_name)
+            df.to_frame().to_feather(save_path)
+        else: df.to_feather(save_path)
 
     return df
