@@ -39,6 +39,14 @@
         "cubic_inch": {
             "matches": ["in^3, inch^3"],
             "conversion": 16.3871
+        },
+        "pinch": {
+            "matches": [],
+            "conversion": 0.3
+        },
+        "dash": {
+            "matches": [],
+            "conversion": 0.6
         }
     },
     "weight": {

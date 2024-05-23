@@ -271,7 +271,7 @@ def match_ingredient(ingredient, food_df, exploded_food_df):
     
     return selected_food_idx
 
-# %% ../../notebooks/04-density-db-food-match.ipynb 75
+# %% ../../notebooks/04-density-db-food-match.ipynb 82
 def select_cols(df, cols, limit): 
     df_cols = df.columns[df.columns.str.contains(cols)]
     return list(df_cols[-limit:])

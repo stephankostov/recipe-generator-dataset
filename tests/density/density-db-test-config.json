@@ -129,6 +129,11 @@
             "name": "caramels",
             "ingredient_id": [1746116,	5	],
             "food_id": [2345914, 167974]
+        },
+        {
+            "name": "salt pinch",
+            "ingredient_id": [402239,	7],
+            "food_id": [173468]
         }
         
     ],

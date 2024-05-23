@@ -20,7 +20,7 @@ from ..utils.parallel import parallel_apply
 
 
 # %% ../../notebooks/10-final-db-process.ipynb 6
-special_tokens = ['pad', 'mask', 'unknown', 'end']
+special_tokens = ['pad', 'mask', 'unknown', 'start', 'end']
 
 # %% ../../notebooks/10-final-db-process.ipynb 13
 temp_remap = {
@@ -44,5 +44,4 @@ def process_food_ids(food_ids, special_tokens):
 
 # %% ../../notebooks/10-final-db-process.ipynb 57
 def merge_duplicates(recipe):
-    group = recipe.groupby('food_id')['weight_ratio'].sum()
-    return group
+    return recipe.groupby('food_id')['weight_ratio'].sum()

@@ -38,8 +38,6 @@ logger = configure_logger(logging.getLogger(__name__))
 #     return foods
 
 def pipe_merge_duplicate_foods(foods):
-
-
     merged_duplicates = foods.groupby('recipe').progress_apply(merge_duplicates)
     merged_duplicates = merged_duplicates.to_frame().reset_index().set_index('recipe')
     return merged_duplicates

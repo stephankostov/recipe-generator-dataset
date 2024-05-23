@@ -30,7 +30,7 @@ def test_instance(test_info, expanded_ingredients_df, ingredients_df, food_df, e
     print("TRANSFORMED INGREDIENT:", ingredient[ingredient.notnull()], sep='\n')
     print("EXPECTING:", food_df.loc[test_info['food_id']].to_markdown(), sep='\n')
 
-    matched_df = food_df.loc[match_food_df_on_ingredient(ingredient, exploded_food_df)]
+    matched_df = food_df.loc[search_food_df(ingredient, exploded_food_df)]
     if matched_df.empty:
         print("OUTCOME:", 'No matches found', sep='\n')
         print("==========================", "RESULT: FAILED", "==========================", sep='\n')
@@ -39,7 +39,7 @@ def test_instance(test_info, expanded_ingredients_df, ingredients_df, food_df, e
     unit_type = ingredients_df['unit_type'].loc[ingredient.name]
     if unit_type == 'weight': return 1, pd.DataFrame()
 
-    selected_df = select_from_matches(matched_df, ingredient, {f'{unit_type}_exists':False, **sort_order}, True)
+    selected_df = select_from_searches(matched_df, ingredient, unit_type, True)
 
     if selected_df.iloc[0].name in test_info['food_id']:
         print('\n')
@@ -68,7 +68,7 @@ def run_tests(tests_info, save_dir, *args):
         if test_result:
             test_score += 1
         else:
-            write_failure_info(output_df, save_dir/f"{i}_{test_info['name']}.html")
+            write_failure_info(output_df, save_dir/f"{i}_{test_info['name'].replace(' ', '_')}.html")
 
     print("TESTS COMPLETE")
     print("PASSED TESTS:", test_score)
@@ -78,7 +78,7 @@ def run_tests(tests_info, save_dir, *args):
 def main():
     
     logger.info("Initialising files")
-    save_dir = Path(f'{root}/../data/tests/food-df-join/')
+    save_dir = Path(f'{root}/tests/data/food-df-join/')
     initialise_output_files(save_dir)
 
     logger.info("Loading data")
