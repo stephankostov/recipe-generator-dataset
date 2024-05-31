@@ -204,7 +204,7 @@ def find_ner_match(ingredient):
         
     return ner_match
 
-# %% ../../notebooks/01-recipes-db-process.ipynb 169
+# %% ../../notebooks/01-recipes-db-process.ipynb 172
 def tokenize_with_spans(txt):
     tokens=mt.tokenize(txt)
     offset = 0
@@ -213,14 +213,14 @@ def tokenize_with_spans(txt):
         yield token, offset, offset+len(token)
         offset += len(token)
 
-# %% ../../notebooks/01-recipes-db-process.ipynb 172
+# %% ../../notebooks/01-recipes-db-process.ipynb 175
 def get_match_idxs(ingredient_string, search_string):
     idx = ingredient_string.find(search_string)
     if idx == -1: 
         return None
     return set(range(idx, idx+len(search_string)))
 
-# %% ../../notebooks/01-recipes-db-process.ipynb 174
+# %% ../../notebooks/01-recipes-db-process.ipynb 177
 def split_nouns(ingredient_string, cut_string):
 
     if not cut_string: return ([], [])
@@ -245,7 +245,7 @@ def split_nouns(ingredient_string, cut_string):
 
     return tags_split
 
-# %% ../../notebooks/01-recipes-db-process.ipynb 176
+# %% ../../notebooks/01-recipes-db-process.ipynb 179
 def split_ingredient_fields_by_noun(ingredient, debug=False):
     for col in ingredient.index:
         if col == 'ingredient_string': continue
@@ -255,7 +255,7 @@ def split_ingredient_fields_by_noun(ingredient, debug=False):
                 print('WARN: Missing ingredient tags', ingredient.name, col, ingredient[col], ingredient['ingredient_string'], sep=' | ')
     return ingredient
 
-# %% ../../notebooks/01-recipes-db-process.ipynb 186
+# %% ../../notebooks/01-recipes-db-process.ipynb 189
 def remove_name_from_description(ingredient):
     ingredient_cols = ingredient[ingredient.notnull()].index
     ingredient_name_cols = ingredient_cols[ingredient_cols.str.startswith('name.name')]
@@ -264,7 +264,7 @@ def remove_name_from_description(ingredient):
     ingredient[matching_cols] = pd.NA
     return ingredient
 
-# %% ../../notebooks/01-recipes-db-process.ipynb 201
+# %% ../../notebooks/01-recipes-db-process.ipynb 204
 def filter_patterns(ingredient, filters):
 
     cols = ingredient.index[ingredient.notnull()]

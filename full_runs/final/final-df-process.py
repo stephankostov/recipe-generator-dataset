@@ -43,12 +43,9 @@ def pipe_merge_duplicate_foods(foods):
     return merged_duplicates
     
 
-def pipe_process_food_ids(foods):
+def pipe_process_food_ids(foods, food_df, special_tokens):
 
-    foods['food_id'] = process_food_ids(foods['food_id'], special_tokens)
-
-    return foods
-
+    return process_foods_df(foods, food_df, special_tokens)
 
 def main():
 
@@ -58,19 +55,24 @@ def main():
     logger.info("Loading dataframes")
     food_ids = pd.read_feather(select_last_file(f'{root}/../data/local/molecule/full/food_ids'), dtype_backend='pyarrow')
     food_weights = pd.read_feather(select_last_file(f'{root}/../data/local/density/full/weights'), dtype_backend='pyarrow')
+    food_df = pd.read_feather(select_last_file(f'{root}/../data/local/molecule/full/food/'), dtype_backend='pyarrow')
 
     foods = food_ids.join(food_weights, how='inner')
+
+    print(foods.shape)
     
-    logger.info("Processing food_ids")
+    logger.info("Processing foods_df")
     foods = load_or_create_dataframe(
         save_dir/'0_food_ids_processed.feather',
         pipe_process_food_ids,
         is_series=False,
         dtype_backend='pyarrow',
-        foods=foods
+        foods=foods, food_df=food_df, special_tokens=special_tokens
     )
 
-    logger.info("Compiling recipe food_ids")
+    print(foods.shape)
+
+    logger.info("Merging food_ids")
     foods = load_or_create_dataframe(
         save_dir/'1_merged.feather',
         pipe_merge_duplicate_foods,
