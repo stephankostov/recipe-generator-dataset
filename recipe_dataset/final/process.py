@@ -50,6 +50,6 @@ def process_foods_df(foods, food_df, special_tokens):
     foods['food_id'] = foods['food_id'].fillna(special_tokens.index('unknown'))
     return foods
 
-# %% ../../notebooks/10-final-db-process.ipynb 62
+# %% ../../notebooks/10-final-db-process.ipynb 65
 def merge_duplicates(recipe):
     return recipe.groupby('food_id')['weight_ratio'].sum()
