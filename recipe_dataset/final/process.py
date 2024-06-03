@@ -34,8 +34,8 @@ temp_remap = {
 }
 
 # %% ../../notebooks/10-final-db-process.ipynb 50
-def remove_salt(foods, food_df):
-    return foods[~(foods['food_id']==food_df[food_df['name'] == 'salt'].index[0])]
+def remove_salt(foods, food_names):
+    return foods[~(foods['food_id']==np.where(food_names=='salt')[0][0])]
 
 # %% ../../notebooks/10-final-db-process.ipynb 53
 def shift_food_ids(food_ids, special_tokens):
@@ -43,9 +43,9 @@ def shift_food_ids(food_ids, special_tokens):
     return food_ids.progress_apply(lambda id: id + shift if pd.notna(id) else id)
 
 # %% ../../notebooks/10-final-db-process.ipynb 58
-def process_foods_df(foods, food_df, special_tokens):
-    foods = remove_salt(foods, food_df)
+def process_foods_df(foods, food_names, special_tokens):
     foods['food_id'] = shift_food_ids(foods['food_id'], special_tokens)
+    foods = remove_salt(foods, food_names)
     # food_ids = food_ids.replace(temp_remap)
     foods['food_id'] = foods['food_id'].fillna(special_tokens.index('unknown'))
     return foods

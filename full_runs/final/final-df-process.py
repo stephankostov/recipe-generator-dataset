@@ -43,9 +43,9 @@ def pipe_merge_duplicate_foods(foods):
     return merged_duplicates
     
 
-def pipe_process_food_ids(foods, food_df, special_tokens):
+def pipe_process_food_ids(foods, food_names, special_tokens):
 
-    return process_foods_df(foods, food_df, special_tokens)
+    return process_foods_df(foods, food_names, special_tokens)
 
 def main():
 
@@ -55,7 +55,7 @@ def main():
     logger.info("Loading dataframes")
     food_ids = pd.read_feather(select_last_file(f'{root}/../data/local/molecule/full/food_ids'), dtype_backend='pyarrow')
     food_weights = pd.read_feather(select_last_file(f'{root}/../data/local/density/full/weights'), dtype_backend='pyarrow')
-    food_df = pd.read_feather(select_last_file(f'{root}/../data/local/molecule/full/food/'), dtype_backend='pyarrow')
+    food_names = np.load(f'{root}/../data/local/final/full/food_names/0.npy')
 
     foods = food_ids.join(food_weights, how='inner')
 
@@ -67,8 +67,10 @@ def main():
         pipe_process_food_ids,
         is_series=False,
         dtype_backend='pyarrow',
-        foods=foods, food_df=food_df, special_tokens=special_tokens
+        foods=foods, food_names=food_names, special_tokens=special_tokens
     )
+
+    assert foods[foods['food_id']==np.where(food_names=='salt')[0][0]].empty
 
     print(foods.shape)
 
@@ -81,6 +83,30 @@ def main():
         foods=foods
     )
 
+    foods = foods.astype({
+        'food_id': 'int64',
+        'weight_ratio': 'float64'
+    })
+
+    logger.info("Creating food_ids numpy array")
+    food_ids = pd.DataFrame(foods.groupby('recipe')['food_id'].aggregate(lambda x: list(x)[:14]).tolist())
+    food_ids = food_ids \
+        .fillna(np.where(food_names=='<pad>')[0][0]) \
+        .astype('int') \
+        .to_numpy()
+    np.save(save_dir/'recipe_food_ids.npy', food_ids)
+
+    print(food_ids)
+
+    logger.info("Creating food_weights numpy array")
+    food_weights = pd.DataFrame(foods.groupby('recipe')['weight_ratio'].aggregate(lambda x: list(x)[:14]).tolist())
+    food_weights = food_weights \
+        .fillna(0.) \
+        .astype('float64') \
+        .to_numpy()
+    np.save(save_dir/'recipe_food_weights.npy', food_weights)
+
+    print(food_weights)
 
 if __name__ == '__main__':
     main()
