@@ -1,9 +1,4 @@
-# Development Process
-
-1. Initial development (using small dataframe samples) [./notebooks](./notebooks)
-2. Core functions automatically exported to [./food_database](./food_database) module using [nbdev](https://nbdev.fast.ai/getting_started.html)
-2. Testing framework run [./tests](./full_tests)
-3. Full dataframe pipelines [./full_runs](./full_runs)
+Repository for the [recipe-generator](https://github.com/stephankostov/recipe-generator) dataset creation.
 
 # Key Features
 
@@ -21,13 +16,19 @@
 - Parallelisation of all data processing with distributed data library [Dask](https://www.dask.org/) 
 - Recipe ingredient tokenisation through similarity of their word embedded vectors
 
-
 # Data Sources
 
 - Recipes: [RecipeNLG](https://recipenlg.cs.put.poznan.pl/)
 - Molecular Compositions: [FooDB](https://foodb.ca/)
 - Density: [USDA FoodData Central](https://fdc.nal.usda.gov/)
 - Molar Masses: [PubChem Compound](https://pubchem.ncbi.nlm.nih.gov/#query=)
+
+# Development Process
+
+1. Initial development (using small dataframe samples) [./notebooks](./notebooks)
+2. Core functions automatically exported to [./food_database](./food_database) module using [nbdev](https://nbdev.fast.ai/getting_started.html)
+2. Testing framework run [./tests](./full_tests)
+3. Full dataframe pipelines [./full_runs](./full_runs)
 
 # TODO
 
